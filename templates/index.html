@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login</title>
+</head>
+<body>
+	<h1>Login</h1>
+	<form method="POST" action="/login">
+		<label>Usuário:</label><br>
+		<input type="text" name="username" placeholder="Tente: admin"><br>
+		<label>Senha:</label><br>
+		<input type="password" name="password" placeholder="Tente: admin123"><br>
+		<input type="submit" value="Login">
+	</form>
+	{% with messages = get_flashed_messages(with_categories=true, category_filter=['error']) %}
+		{% if messages %}
+			<ul class="messages">
+			{% for category, message in messages %}
+				<li class="{{ category }}">{{ message }}</li>
+			{% endfor %}
+			</ul>
+		{% endif %}
+	{% endwith %}
+</body>
+</html>
